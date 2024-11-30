@@ -43,6 +43,9 @@ WORKDIR /root
 
 COPY --from=builder /root/lc0/build/release /root/lc0
 
+# Add the lc0.config file with preload=true
+RUN echo "preload=true" > /root/lc0/lc0.config
+
 RUN echo $TZ > /etc/timezone && \
     apt-get update && \
     apt-get install -y \
